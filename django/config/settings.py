@@ -28,15 +28,17 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    'user',
-    'qanda',
-
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'markdownify',
+    'crispy_forms',
+
+    'user',
+    'qanda',
 ]
 
 MIDDLEWARE = [
@@ -128,3 +130,13 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static')
 ]
+
+#Markdownify settings
+MARKDOWNIFY_STRIP = False
+MARKDOWNIFY_WHITELIST_TAGS = [
+    'a', 'blockquote', 'code', 'em', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6',
+    'h7', 'li', 'ol', 'p', 'strong', 'ul'
+]
+
+#Crispy_forms settings
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
