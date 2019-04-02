@@ -1,2 +1,5 @@
 django<2.1
 psycopg2-binary<2.8
+django-markdownify==0.2.2
+django-crispy-forms==1.7.0
+django-braces
