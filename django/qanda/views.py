@@ -33,8 +33,7 @@ class AskQuestionView(LoginRequiredMixin, CreateView):
 
     def form_valid(self, form):
         action = self.request.POST.get('action')
-        console.log(action)
-        if action == ' SAVE':
+        if action == 'SAVE':
             #save the redirect as usual.
             return super().form_valid(form)
         elif action == 'PREVIEW':
@@ -71,13 +70,12 @@ class QuestionDetailView(DetailView):
 
 class CreateAnswerView(LoginRequiredMixin, CreateView):
     form_class = AnswerForm
-    #TODO: create template
     template_name = 'qanda/create_answer.html'
 
     def get_initial(self):
         return {
             'question': self.get_question().id,
-            'user': seif.request.user.id,
+            'user': self.request.user.id,
         }
 
     def get_context_data(self, **kwargs):

@@ -125,6 +125,8 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
 
+STATIC_ROOT = os.path.join(os.path.dirname(BASE_DIR), 'static')
+
 STATIC_URL = '/static/'
 
 STATICFILES_DIRS = [
@@ -140,3 +142,8 @@ MARKDOWNIFY_WHITELIST_TAGS = [
 
 #Crispy_forms settings
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
+
+#Django.contrib.auth settings
+LOGIN_URL = 'user:login'
+LOGIN_REDIRECT_URL = 'qanda:index'
+LOGOUT_REDIRECT_URL = 'qanda:index'

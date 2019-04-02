@@ -5,6 +5,9 @@ from qanda import views
 app_name = 'qanda'
 
 urlpatterns = [
+    path('',
+        views.TodaysQuestionList.as_view(),
+        name='index'),
     path(
         'ask', 
         views.AskQuestionView.as_view(), 

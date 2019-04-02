@@ -12,8 +12,8 @@
             <div class="card question-preview">
                 <div class="card-header">Question Preview</div>
                 <div class="card-body">
-                    <h1 class="card-title">{{ preview.title }}</h1>
-                    {{ preview.queston|markdownify }}
+                    <h1 class="card-title">{{ preview.title|markdownify }}</h1>
+                    {{ preview.question|markdownify }}
                 </div>
             </div>
         {% endif %}
