@@ -29,6 +29,17 @@
                     <a href="{% url 'qanda:ask' %}" class="nav-link">Ask</a>
                 </li>
                 <li class="nav-item">
+                    <form action="{% url 'qanda:question_search' %}" method="get" class="form-inline">
+                        <input 
+                            class="form-control mr-sm2"
+                            type="search" 
+                            name="q"
+                            placeholder="Search"
+                        >
+                        <button type="submit" class="btn btn-primary my-2 my-sm-0">Search</button>
+                    </form>
+                </li>
+                <li class="nav-item">
                     <a href="{% url 'qanda:index' %}" class="nav-link">
                         Today's 🔥 Questions
                     </a>

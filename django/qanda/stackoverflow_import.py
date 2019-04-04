@@ -19,7 +19,7 @@ def top_questions():
     soup = BeautifulSoup(html, features='html.parser')
     questions = soup.find_all('a', {'class': 'question-hyperlink'})
     
-    for question in questions[:50]:
+    for question in questions[:100]:
         question_url = parse.urljoin(base_url, question.get('href'))
         yield question_url
         

@@ -33,4 +33,8 @@ urlpatterns = [
         views.DailyQuestionList.as_view(),
         name='daily_questions',
     ),
+    path('q/search', 
+         views.SearchView.as_view(), 
+         name='question_search'
+    ),
 ]

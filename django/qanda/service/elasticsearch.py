@@ -20,8 +20,9 @@ def get_client():
 def bulk_load(questions):
     all_ok = True
     es_questions = (q.as_elasticsearch_dict() for q in questions)
+    client = get_client()
     bulk = streaming_bulk(
-        get_client(),
+        client,
         es_questions,
         index = settings.ES_INDEX,
         raise_on_error=False,
@@ -32,3 +33,19 @@ def bulk_load(questions):
             action, result = result.popitem()
             logger.error(f"Failed to load {result['id']}: {result!r}")
     return all_ok
+
+def search_for_questions(query):
+    client = get_client()
+    result = client.search(
+        index=settings.ES_INDEX,
+        body={
+            'query': {
+                'match': {
+                    'text': query,
+                },
+            },
+        },
+    )
+    logger.info(f"Elasticsearch returned {result['hits']['total']} results for query '{query}'"
+                f"Query took {result['took']}ms")
+    return (h['_source'] for h in result['hits']['hits'])
