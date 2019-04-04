@@ -49,3 +49,20 @@ def search_for_questions(query):
     logger.info(f"Elasticsearch returned {result['hits']['total']} results for query '{query}'"
                 f"Query took {result['took']}ms")
     return (h['_source'] for h in result['hits']['hits'])
+
+def upsert(question):
+    client = get_client()
+    question_dict = question.as_elasticsearch_dict()
+    doc_type = question_dict['_type']
+    del question_dict['_id']
+    del question_dict['_type']
+    response = client.update(
+        index=settings.ES_INDEX,
+        doc_type=doc_type,
+        id=question.id,
+        body={
+            'doc': question_dict,
+            'doc_as_upsert': True,
+        }
+    )
+    return response
