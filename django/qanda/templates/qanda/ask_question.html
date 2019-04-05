@@ -21,10 +21,10 @@
         <form action="" method="post">
             {{ form|crispy }}
             {% csrf_token %}
-            <button class="btn btn-primary" type="submit" name="action" value="PREVIEW">
+            <button class="btn btn-primary" type="submit" name="action" value="PREVIEW" id="preview">
                 Preview
             </button>
-            <button class="btn btn-primary" type="submit" name="action" value="SAVE">
+            <button class="btn btn-primary" type="submit" name="action" value="SAVE" id="ask">
                 Submit
             </button>
         </form>
